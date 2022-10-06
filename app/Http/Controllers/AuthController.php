@@ -30,15 +30,15 @@ class AuthController extends Controller
             ], 401);
         }
 
-        $user = Auth::user();
-        return response()->json([
-            'status' => 'success',
-            'user' => $user,
-            'authorisation' => [
-                'token' => $token,
-                'type' => 'bearer',
-            ]
-        ]);
+//        $user = Auth::user();
+//        return response()->json([
+//            'status' => 'success',
+//            'user' => $user,
+//            'authorisation' => [
+//                'token' => $token,
+//                'type' => 'bearer',
+//            ]
+//        ]);
         return $this->respondWithToken($token);
 
     }
@@ -57,15 +57,16 @@ class AuthController extends Controller
         ]);
 
         $token = Auth::login($user);
-        return response()->json([
-            'status' => 'success',
-            'message' => 'User created successfully',
-            'user' => $user,
-            'authorisation' => [
-                'token' => $token,
-                'type' => 'bearer',
-            ]
-        ]);
+        return $this->login($request);
+//        return response()->json([
+//            'status' => 'success',
+//            'message' => 'User created successfully',
+//            'user' => $user,
+//            'authorisation' => [
+//                'token' => $token,
+//                'type' => 'bearer',
+//            ]
+//        ]);
     }
 
     public function logout()

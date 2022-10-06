@@ -311,7 +311,14 @@
 
 <script>
 export default {
-name: "Home"
+name: "Home",
+    created() {
+        if(!User.loggedIn()){
+            this.$router.push({ name: 'login'})
+
+        }
+    },
+
 }
 </script>
 
